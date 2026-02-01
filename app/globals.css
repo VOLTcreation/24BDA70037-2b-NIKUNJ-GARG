@@ -1,26 +1,93 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   THEME CONCEPT
+   ---------------------------------------------------------
+   Background → Mint Green (emerald-50)
+   Card       → White
+   Accent     → Emerald Green (emerald-600)
+   Text       → Gray-800
+   ========================================================= */
+
+/* =========================================================
+   LIGHT MODE (Mint + White + Gray)
+   ========================================================= */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --radius: 0.625rem;
+
+  /* 1️⃣ BACKGROUND → bg-emerald-50 */
+  --background: 145 50% 94%;
+
+  /* 4️⃣ TEXT → text-gray-800 */
+  --foreground: 0 0% 28%;
+
+  /* 2️⃣ CARD → bg-white */
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 28%;
+
+  /* 3️⃣ ACCENT → emerald-600 */
+  --primary: 145 63% 42%;
+  --primary-foreground: 0 0% 98%;
+
+  /* Supporting neutrals */
+  --secondary: 0 0% 94%;
+  --secondary-foreground: 0 0% 28%;
+
+  --muted: 0 0% 94%;
+  --muted-foreground: 0 0% 45%;
+
+  --accent: 0 0% 94%;
+  --accent-foreground: 0 0% 28%;
+
+  /* Utility */
+  --border: 0 0% 88%;
+  --input: 0 0% 88%;
+  --ring: 145 63% 42%;
+  --destructive: 0 84% 60%;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* =========================================================
+   DARK MODE (Mint-based, Calm)
+   ========================================================= */
+
+.dark {
+  --background: 150 10% 16%;
+  --foreground: 0 0% 98%;
+
+  --card: 150 9% 22%;
+  --card-foreground: 0 0% 98%;
+
+  --primary: 145 50% 58%;
+  --primary-foreground: 0 0% 15%;
+
+  --secondary: 0 0% 30%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 0 0% 30%;
+  --muted-foreground: 0 0% 70%;
+
+  --accent: oklch(0.3 0 0);
+  --accent-foreground: oklch(0.98 0 0);
+
+  --border: 0 0% 25%;
+  --input: 0 0% 25%;
+  --ring: 145 50% 58%;
+  --destructive: 0 62% 65%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* =========================================================
+   BASE LAYER
+   ========================================================= */
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
 }
